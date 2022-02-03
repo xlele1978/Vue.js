@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>v-bind 指令</title>
+    </head>
+    <body>
+        <div id="app">
+            <p><a v-bind:href="url">新浪网</a></p>
+            <p><a :href="url">新浪网</a></p>
+            <p><a :[attribute]="url">新浪网</a></p>   <!--动态属性名-->
+            <img :src="'images/'+imgname">
+            <form v-bind="formObj">
+                <input type="text">
+            </form>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data(){
+                    return{
+                        url: 'http://www.sina.com.cn/',
+                        attribute: 'href',
+                        imgname: 'bg.jpg',
+                        formObj:{
+                            method: 'get',
+                            action: '#'
+                        }
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

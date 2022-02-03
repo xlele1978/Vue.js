@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>v-text 和 v-html 指令</title>
+    </head>
+    <body>
+        <div id="app">
+            <p v-text="message">abc</p>
+            <p>abc, {{ message }}, def</p>
+            <p v-html="hE"></p>
+            <p>{{ hE }}</p>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        message: 'Hello, Vue.js!',
+                        hE:'<h1>Java 无难事<h1>'          
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

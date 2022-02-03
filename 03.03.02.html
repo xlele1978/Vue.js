@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>v-for-filter 指令</title>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <!-- <li v-for="number in evennumbers">{{ number }}</li> -->
+                <li v-for="number in even(numbers)">{{ number }}</li>
+                <span v-for="n in 10">{{ n }}</span>
+            </ul>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        numbers:[1,2,3,4,5,6,7]
+                    }
+                },
+                // computed: {
+                //     evennumbers() {
+                //         return this.numbers.filter(number=>number % 2=== 0)  //获取偶数   
+                //     }
+                // } 
+                methods:{
+                    even(numbers){
+                        return this.numbers.filter(number=>number % 2 === 0)
+                    }
+                }             
+            }).mount("#app");
+        </script>
+    </body>
+</html>

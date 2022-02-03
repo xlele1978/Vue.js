@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue.js 的模板语法</title>
+    </head>
+    <body>
+        <div id="app">
+            <p>{{ message }}</p>      <!--简单的文本插值-->
+            <p>{{ message.toUpperCase() }}</p>   <!--使用 JavaScript 表达式-->
+            <a v-bind:[attributename]="url">新浪网</a>   <!--使用 v-bind 指令对HTML元素的属性进行绑定-->
+            <p>{{ spanHtml }}</p>  <!--HTML 代码将以普通文本的方式输出-->
+            <p v-html="spanHtml"></p>  <!--输出 HTML 代码-->
+            <P><button v-on:click="sayHello">问候</button></P>  <!--使用 v-on 指令对DOM事件进行监听-->
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const app = Vue.createApp({
+                data(){
+                    return {
+                        message: "Hello Vue.js",
+                        attributename: "href",
+                        url: "http://www.sina.com.cn/",
+                        spanHtml: "<span style='color:red'>HTML 元素，以红色字体显示</span>"
+                    }
+                },
+                methods:{
+                    sayHello(){
+                        alert("你好！")
+                    }
+                }
+            })
+            const vm = app.mount("#app");
+        </script>
+    </body>
+</html>
