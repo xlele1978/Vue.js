@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>计算属性替代 v-if 与 v-for 一起使用</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>计划完成情况：</h1>
+            <h2>已完成的计划</h1>
+            <ul>
+                <li v-for="plan in completedPlans">{{plan.content}}</li>
+            </ul>
+            <h2>未完成的计划</h1>
+            <ul>
+                <li v-for="plan in incompletePlans">{{plan.content}}</li>
+            </ul>
+        </div>
+    </body>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        const vm = Vue.createApp({
+            data(){
+                return{
+                    plans:[
+                        {content:'写书', isComplete: false},
+                        {content:'买菜', isComplete: true},
+                        {content:'做饭', isComplete: true},
+                        {content:'打球', isComplete: false}
+                    ]
+                }
+            },
+            computed: {
+                completedPlans() {
+                    return this.plans.filter(plan => plan.isComplete);
+                },
+                incompletePlans() {
+                    return this.plans.filter(plan => !plan.isComplete);
+                }
+            }
+        }).mount('#app');
+    </script>
+</html>
