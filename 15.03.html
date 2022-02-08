@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>监听对象</title>
+    </head>
+    <body>
+        <div id="app">
+        <p>年龄: <input type="text" v-model="person.age"></p>
+        <p v-show="info">{{ info }}</p>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        person:{
+                            name: 'lisi',
+                            age: 0
+                        },
+                        info: ''
+                    }
+                },
+                watch: {
+                    // person: {
+                    //     handler(val,oldVal) {
+                    //         if(val.age >= 18) {
+                    //             this.info = '已成年'
+                    //         }
+                    //         else {
+                    //             this.info = '未成年'
+                    //         }
+                    //     },
+                    //     deep: true,
+                    //     immediate: true  //监听初始状态值
+                    // }
+                    'person.age'(val) {
+                        if(val >= 18) {
+                            this.info = '已成年'
+                            }
+                        else {
+                            this.info = '未成年'
+                            } 
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>监听属性</title>
+    </head>
+    <body>
+        <div id="app">
+            <p>米： <input type="text" v-model="meters"></p>
+            <p>千米： <input type="text" v-model="kilometers"></p>
+            <p><input type="text" size="5" v-model="meters">米 = <input type="text" size="5" v-model="kilometers">千米</p>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        meters: 0,
+                        kilometers: 0
+                    }
+                },
+                watch: {
+                    meters(val,oldVal){
+                        this.kilometers = val / 1000;
+                    },
+                    kilometers(val) {
+                        this.meters = val * 1000;
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>
