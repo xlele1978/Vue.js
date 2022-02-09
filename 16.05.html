@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>表格奇偶行应用不同的样式</title>
+        <style>
+            body {
+                width: 450px;
+            }
+            table {
+                border: 1px solid black;
+                width: 100%;
+            }
+            th {
+                height: 40px;
+            }
+            th, td {
+                border: 1px solid #ddd;
+                text-align: center;
+            }
+            [v-cloak] {
+                display: none;
+            }
+            .even {
+                background-color: #cdcdcd;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app" v-cloak>
+            <table>
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>书名</th>
+                        <th>作者</th>
+                        <th>价格</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(book,index) in books" :key="book.id" :class="{even : (index+1) % 2 === 0}">
+                        <td>{{ book.id }}</td>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.price }}</td>
+                        <td>
+                            <button @click="deleteItem(index)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        books: [
+                            {
+                                id: 1,
+                                title: 'Java 无难事',
+                                author: '孙鑫',
+                                price: 188
+                            },
+                            {
+                                id: 2,
+                                title: 'VC++ 深入详解',
+                                author: '孙鑫',
+                                price: 168
+                            },
+                            {
+                                id: 3,
+                                title: 'Servlet/JSP 深入详解',
+                                author: '孙鑫',
+                                price: 139
+                            },
+                            {
+                                id: 4,
+                                title: 'Vue.js 从入门到实战',
+                                author: '孙鑫',
+                                price: 89.8
+                            }
+                        ]
+                    }
+                },
+                methods: {
+                    deleteItem(index) {
+                        this.books.splice(index,1);
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

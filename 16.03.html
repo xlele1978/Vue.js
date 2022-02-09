@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>绑定内联样式 style 的对象语法</title>
+    </head>
+    <body>
+        <div id="app">
+            <div style="color: red; font-size:30px">Java 无难事</div>
+            <div :style="{ color: 'purple', 'font-size': '30px' }">Java 无难事</div>
+            <div :style="{ color: textColor, fontSize: textFontSize + 'px' }">Java 无难事</div>
+            <div :style="styleObject">Java 无难事</div>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                        textColor: 'green',
+                        textFontSize: 30,
+                        styleObject: {
+                            color: 'black',
+                            fontSize: '30px'
+                        }
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

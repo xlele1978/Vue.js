@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>绑定内联样式 style 的数组语法</title>
+    </head>
+    <body>
+        <div id="app">
+            <div :style="[baseStyles, moreStyles]">Java 无难事</div>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                       baseStyles: {
+                           width: '200px',
+                           height: '200px',
+                           border: '2px solid black'
+                       },
+                       moreStyles: {
+                           color: 'red',
+                           backgroundColor: 'gray'
+                       }
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>
