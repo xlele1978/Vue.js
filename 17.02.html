@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>单个/多个 复选框</title>
+    </head>
+    <body>
+        <div id="app">
+            <h3>单个复选框：</h3>
+            <input type="checkbox" v-model="isAgree">
+            <label>{{ isAgree }}</label>
+            <br>
+            <br>
+            <input id="agreement" type="checkbox" v-model="isAgree"
+            true-value="yes" false-value="no">
+            <label for="agreement">{{ isAgree }}</label>
+            <br/>
+            <br/>
+            <input id="agreement" type="checkbox" v-model="isAgree"
+            :true-value="trueVal" :false-value="falseVal">
+            <label for="agreement">{{ isAgree }}</label>
+            <br/>
+            <br/>
+
+            <h3>多个复选框</h3>
+            <input type="checkbox" v-model="interests" value="篮球">
+            <label>篮球</label>
+            <input type="checkbox" v-model="interests" value="足球">
+            <label>足球</label>
+            <input type="checkbox" v-model="interests" value="排球">
+            <label>排球</label>
+            <input type="checkbox" v-model="interests" value="游泳">
+            <label>游泳</label>
+            <p>你的兴趣爱好是：{{ interests }}</p>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const vm = Vue.createApp({
+                data() {
+                    return {
+                       isAgree: false,
+                       trueVal: '真',
+                       falseVal: '假',
+                       interests: []
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>
