@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>响应式 API 之 computed() 方法</title>
+    </head>
+    <!-- <body>
+        <div id="app">
+            <p>原始字符串: {{ message }}</p>
+            <p>计算后的反转字符串: {{ reversedMessage }}</p>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const {ref, computed} = Vue;
+            const vm = Vue.createApp({
+                setup(){
+                    const message = ref('Hello, Java 无难事!')
+                    const reversedMessage = computed(() => 
+                        message.value.split('').reverse().join(''))
+                    return {
+                        message,
+                        reversedMessage
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body> -->
+
+    <body>
+        <div id="app">
+            <p>First name: <input type="text" size="5" v-model="firstName"></p>
+            <p>Last name: <input type="text" size="5" v-model="lastName"></p>
+            <p>Full name: {{ fullName }}</p>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>  
+            const {ref, computed} = Vue;
+            const vm = Vue.createApp({
+                setup(){
+                    const firstName = ref('Smith');
+                    const lastName = ref('Will');
+                    const fullName = computed({
+                        get: () => firstName.value + ' ' + lastName.value,
+                        set: val => {
+                            let names = val.split(' ')
+                            firstName.value = names[0]
+                            lastName.value = names[names.length - 1]
+                        }
+                    });
+                    return {
+                        firstName,
+                        lastName,
+                        fullName
+                    }
+                }
+            }).mount('#app');
+        </script>
+    </body>
+</html>

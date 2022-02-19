@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>响应式 API 之 ref() 方法</title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@next"></script>
+        <!-- <script>
+            const {ref, watchEffect} = Vue;
+            const state = ref(0)
+            watchEffect(() =>{
+                document.body.innerHTML = `count is ${state.value}`
+            })
+        </script> -->
+
+        <!-- <div id="app">
+            <span>{{ count }}</span><br/>
+            <button @click="count++">Increment count</button>
+        </div>
+        <script>
+            const {ref} = Vue;
+            const app = Vue.createApp({
+                setup(){
+                    const count = ref(0);
+                    return {
+                        count
+                    }
+                }
+            })
+            app.mount('#app')
+        </script> -->
+        
+        <script>
+            const {ref, reactive} = Vue;
+            const count = ref(0)
+            const state = reactive({
+                count
+            })
+            console.log(state.count);
+
+            state.count = 1
+            console.log(count.value);
+
+            const otherCount = ref(2)
+            state.count = otherCount
+            console.log(state.count)
+            console.log(count.value)
+
+            const books = reactive([ref('Vue3从入门到实战')])
+            console.log(books[0].value)
+
+            const map = reactive(new Map([['count', ref(0)]]))
+            console.log(map.get('count').value)
+        </script>
+    </body>
+</html>

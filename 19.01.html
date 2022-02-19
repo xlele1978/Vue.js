@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>组合 API 之 setup() 函数</title>
+    </head>
+    <body>
+        <div id="app">
+            <post-item :post-title="title"></post-item>
+        </div>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const app = Vue.createApp({
+                data() {
+                    return {
+                        title: 'Java 无难事'
+                    }
+                }
+            });
+            app.component('PostItem',{
+                props: ['postTitle'],
+                setup(props) {
+                    Vue.watchEffect(() => {
+                        console.log(props.postTitle);
+                    })
+                },
+                template: '<h3>{{ postTitle }}</h3>'
+            });
+            const vm = app.mount('#app');
+        </script>
+    </body>
+</html>

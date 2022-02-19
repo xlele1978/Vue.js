@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>响应式 API 之解构响应性状态</title>
+</head>
+
+<body>
+    <div id="app">
+        <p>作者：{{author}}</p>
+        <p>书名：{{title}}</p>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        // const {reactive, toRefs} = Vue;
+        const {reactive, toRef} = Vue;
+        const app = Vue.createApp({
+            setup() {
+                const book = reactive({
+                    author: '孙鑫',
+                    year: '2020',
+                    title: 'Java无难事',
+                    description: '让Java的学习再无难事',
+                    price: '188'
+                })
+                // let { author, title } = toRefs(book);
+                const author = toRef(book, 'author');
+                const title = toRef(book, 'title');
+                return {
+                        author,
+                        title
+                    }
+            }
+        })
+        const vm = app.mount('#app');
+    </script>
+</body>
+
+</html>

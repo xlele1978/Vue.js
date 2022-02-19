@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>响应式 API 之 reactive() 方法和 watchEffect() 方法</title>
+    </head>
+    <body>
+        <script src="https://unpkg.com/vue@next"></script>
+        <script>
+            const {reactive, watchEffect} = Vue;
+            const state = reactive({
+                count: 0
+            })
+            watchEffect(() =>{
+                document.body.innerHTML = `count is ${state.count}`
+            })
+        </script>
+    </body>
+</html>
